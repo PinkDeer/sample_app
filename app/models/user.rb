@@ -34,6 +34,11 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 
+  # Забывает пользователя
+  def forget
+    update_attribute(:remember_digest, nil)
+  end 
+
 end
 
 # User.create(name: "Michael Hartl", email: "mhartl@example.com", password: "foobar", password_confirmation: "foobar")
