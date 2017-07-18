@@ -10,7 +10,7 @@ module SessionsHelper
     user.remember
     cookies.permanent.signed[:user_id] = user.id
     cookies.permanent[:remember_token] = user.remember_token
-  end
+ end
 
   # Возвращает пользователя, соответствующего токену в cookie.
   def current_user
@@ -39,8 +39,9 @@ module SessionsHelper
 
   # Осуществляет выход текущего пользователя.
   def log_out
-    session.delete(:user_id)
-    @current_user = nil
+   forget(current_user)
+   session.delete(:user_id)
+   @current_user = nil
   end
 
 end

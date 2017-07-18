@@ -25,8 +25,8 @@ class User < ActiveRecord::Base
 
   # Запоминает пользователя в базе данных для использования в постоянных сеансах.
   def remember
-   self.remember_token = User.new_token
-   update_attribute(:remember_digest, User.digest(remember_token))
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
   end
 
   # Возвращает true, если указанный токен соответствует дайджесту.
@@ -37,8 +37,6 @@ class User < ActiveRecord::Base
   # Забывает пользователя
   def forget
     update_attribute(:remember_digest, nil)
-  end 
+  end
 
 end
-
-# User.create(name: "Michael Hartl", email: "mhartl@example.com", password: "foobar", password_confirmation: "foobar")
